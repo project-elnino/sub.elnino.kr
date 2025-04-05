@@ -26,15 +26,19 @@
     <iframe id="mainFrame" allowfullscreen></iframe>
 
     <script>
-        // 즉시 실행 함수
-        (function() {
+       (function() {
             // 기본 URL
             const baseUrl = "https://project-elnino-sub.hf.space";
             
             // 현재 URL의 경로와 쿼리 파라미터
-            const path = window.location.pathname;
+            let path = window.location.pathname;
             const search = window.location.search;
             const hash = window.location.hash;
+            
+            // 경로 끝에 있는 슬래시(/) 제거
+            if (path.length > 1 && path.endsWith('/')) {
+                path = path.slice(0, -1);
+            }
             
             // iframe 찾기
             const iframe = document.getElementById('mainFrame');
